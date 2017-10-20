@@ -3,7 +3,9 @@
 # Copyright (C) 2008  Werner Smekal
 #
 # create demo executables
+cmake_minimum_required(VERSION 3.8)
 
+set(LIBHPDF_EXAMPLES 1)
 if(LIBHPDF_EXAMPLES)
   # =======================================================================
   # source file names and c flags
@@ -20,9 +22,9 @@ if(LIBHPDF_EXAMPLES)
     	jpfont_demo
     	line_demo
     	link_annotation
-      make_rawimage
+        make_rawimage
     	outline_demo
-      #outline_demo_jp
+        #outline_demo_jp
     	permission
     	png_demo
     	slide_show_demo
@@ -34,7 +36,8 @@ if(LIBHPDF_EXAMPLES)
   set(
     demos_with_grid_NAMES
     	arc_demo
-      chfont_demo
+        chfont_demo
+        converter_demo
     	raw_image_demo
     	text_demo
     	text_demo2
@@ -45,6 +48,9 @@ if(LIBHPDF_EXAMPLES)
   if(WIN32 AND NOT CYGWIN)
     set(DEMO_C_FLAGS "-D__WIN32__")
   endif(WIN32 AND NOT CYGWIN)
+
+  set(LIBHPDF_NAME "hpdf")
+  set(LIBHPDF_NAME_STATIC "libhpdf.a")
 
   # link the examples to the shared library otherwise to the static
   if(LIBHPDF_SHARED)
