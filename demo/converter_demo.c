@@ -132,7 +132,7 @@ int main (int argc, char **argv)
 
 
     /* Devanagari */
-    detail_font_name = HPDF_LoadTTFontFromFile (pdf, "/Users/liuchaozhen/Library/Fonts/Mangal.ttf", ttopt);
+    detail_font_name = HPDF_LoadTTFontFromFile (pdf, "./ttfont/Mangal.ttf", ttopt);
     detail_font = HPDF_GetFont (pdf, detail_font_name, "Ancient-UTF8-H");
     detail_font_v = HPDF_GetFont (pdf, detail_font_name, "Ancient-UTF16-H");
 
