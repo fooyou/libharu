@@ -45,3 +45,4 @@ depcomp
 *.suo
 /obj/
 /Libs/
+hpdf_config.h
