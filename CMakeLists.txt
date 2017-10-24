@@ -38,6 +38,8 @@ cmake_minimum_required(VERSION 2.4.8 FATAL_ERROR)
 
 if(COMMAND cmake_policy)
     cmake_policy(SET CMP0003 NEW)
+    cmake_policy(SET CMP0042 NEW)
+    cmake_policy(SET CMP0002 NEW)
 endif(COMMAND cmake_policy)
 
 # Location where the haru cmake build system first looks for cmake modules
@@ -111,7 +113,6 @@ pkg_check_modules(FRIBIDI QUIET fribidi)
 find_path(FRIBIDI_INCLUDE_DIR NAMES fribidi/fribidi.h)
 find_library(FRIBIDI_LIBRARIES NAMES fribidi)
 if (FRIBIDI_INCLUDE_DIR AND FRIBIDI_LIBRARIES)
-    set(FRIBIDI_FOUND 1)
     message('${FRIBIDI_INCLUDE_DIR}')
     message('${FRIBIDI_LIBRARIES}')
 endif (FRIBIDI_INCLUDE_DIR AND FRIBIDI_LIBRARIES)

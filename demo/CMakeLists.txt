@@ -37,7 +37,6 @@ if(LIBHPDF_EXAMPLES)
     	arc_demo
       chfont_demo
     	raw_image_demo
-        converter_demo
         # text_demo
         # text_demo2
   )
