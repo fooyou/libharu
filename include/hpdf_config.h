@@ -53,10 +53,10 @@
 #define LIBHPDF_PACKAGE_BUGREPORT "TODO"
 
 /* Define to the full name of this package. */
-#define LIBHPDF_PACKAGE_NAME "libHaru-2.2.0-unknown"
+#define LIBHPDF_PACKAGE_NAME "libHaru-2.2.0-gcc"
 
 /* Define to the full name and version of this package. */
-#define LIBHPDF_PACKAGE_STRING "libHaru-2.2.0-unknown"
+#define LIBHPDF_PACKAGE_STRING "libHaru-2.2.0-gcc"
 
 /* Define to the one symbol short name of this package. */
 #define LIBHPDF_PACKAGE_TARNAME "TODO"

@@ -30,6 +30,7 @@ if(LIBHPDF_EXAMPLES)
     	ttfont_demo
     	ttfont_demo_jp
         converter_demo
+        verify_demo
   )
 
   set(
