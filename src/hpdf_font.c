@@ -19,8 +19,10 @@
 #include "hpdf_utils.h"
 #include "hpdf.h"
 
+#define LIBHPDF_ENABLE_BIDI
+
 #ifdef LIBHPDF_ENABLE_BIDI
-# include "fribidi.h"
+# include "fribidi/fribidi.h"
 #endif
 
 

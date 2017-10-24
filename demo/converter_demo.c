@@ -169,7 +169,7 @@ int main (int argc, char **argv)
     detail_font = HPDF_GetFont(pdf, detail_font_name, "Ancient-UTF8-H");
     HPDF_Font_SetReliefFont (detail_font, relief_font);
 
-    // HPDF_Font_PushBuiltInConverter (detail_font, "BiDi", NULL);
+    HPDF_Font_PushBuiltInConverter (detail_font, "BiDi", NULL);
     HPDF_Font_SetCharacterEncoding (detail_font, HPDF_CHARENC_WCHAR_T);
 
 
@@ -190,7 +190,7 @@ int main (int argc, char **argv)
     detail_font_v = HPDF_GetFont (pdf, detail_font_name, "Ancient-UTF16-H");
     HPDF_Font_SetReliefFont (detail_font_v, relief_font);
 
-    // HPDF_Font_PushBuiltInConverter (detail_font_v, "BiDi", NULL);
+    HPDF_Font_PushBuiltInConverter (detail_font_v, "BiDi", NULL);
     HPDF_Font_SetCharacterEncoding (detail_font_v, HPDF_CHARENC_WCHAR_T);
 
 

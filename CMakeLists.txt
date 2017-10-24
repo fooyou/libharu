@@ -23,6 +23,8 @@ if(MSVC)
   set(COMPILER_LABEL "vc")
 endif(MSVC)
 
+
+
 # information about libharu
 set(LIBHPDF_MAJOR 2)
 set(LIBHPDF_MINOR 2)
@@ -33,6 +35,10 @@ set(LIBHPDF_PACKAGE_NAME "libHaru-${LIBHPDF_VERSION}-${COMPILER_LABEL}")
 
 # we want cmake version 2.4.8 at least
 cmake_minimum_required(VERSION 2.4.8 FATAL_ERROR)
+
+if(COMMAND cmake_policy)
+    cmake_policy(SET CMP0003 NEW)
+endif(COMMAND cmake_policy)
 
 # Location where the haru cmake build system first looks for cmake modules
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
@@ -99,6 +105,21 @@ if(PNG_FOUND)
   set(ADDITIONAL_LIBRARIES ${ADDITIONAL_LIBRARIES} ${PNG_LIBRARIES})
 endif(PNG_FOUND)
 
+# check fribidi availibility
+find_package(PkgConfig)
+pkg_check_modules(FRIBIDI QUIET fribidi)
+find_path(FRIBIDI_INCLUDE_DIR NAMES fribidi/fribidi.h)
+find_library(FRIBIDI_LIBRARIES NAMES fribidi)
+if (FRIBIDI_INCLUDE_DIR AND FRIBIDI_LIBRARIES)
+    set(FRIBIDI_FOUND 1)
+    message('${FRIBIDI_INCLUDE_DIR}')
+    message('${FRIBIDI_LIBRARIES}')
+endif (FRIBIDI_INCLUDE_DIR AND FRIBIDI_LIBRARIES)
+if(FRIBIDI_FOUND)
+    include_directories(${FRIBIDI_INCLUDE_DIR})
+    set(ADDITIONAL_LIBRARIES ${ADDITIONAL_LIBRARIES} ${PNG_LIBRARIES} ${FRIBIDI_LIBRARIES})
+endif(FRIBIDI_FOUND)
+
 
 # =======================================================================
 # configure header files, add compiler flags
@@ -145,6 +166,13 @@ set (LIBHPDF_HAVE_LIBZ ${ZLIB_FOUND})
 if (NOT ZLIB_FOUND)
    set (LIBHPDF_HAVE_NOZLIB 1)
 endif (NOT ZLIB_FOUND)
+
+
+set (LIBHPDF_HAVE_LIBFRIBIDI ${FRIBIDI_FOUND})
+if (NOT FRIBIDI_FOUND)
+    set (LIBHPDF_HAVE_NOFRIBIDI 1)
+    set (HPDF_NOFRIBIDI 1)
+endif (NOT FRIBIDI_FOUND)
 
 
 # create hpdf_config.h
