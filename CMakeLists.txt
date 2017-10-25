@@ -108,19 +108,20 @@ if(PNG_FOUND)
 endif(PNG_FOUND)
 
 # check fribidi availibility
-find_package(PkgConfig)
-pkg_check_modules(FRIBIDI QUIET fribidi)
-find_path(FRIBIDI_INCLUDE_DIR NAMES fribidi/fribidi.h)
-find_library(FRIBIDI_LIBRARIES NAMES fribidi)
-if (FRIBIDI_INCLUDE_DIR AND FRIBIDI_LIBRARIES)
-    message('${FRIBIDI_INCLUDE_DIR}')
-    message('${FRIBIDI_LIBRARIES}')
-endif (FRIBIDI_INCLUDE_DIR AND FRIBIDI_LIBRARIES)
 if(FRIBIDI_FOUND)
     include_directories(${FRIBIDI_INCLUDE_DIR})
+    add_definitions(${LIBHPDF_ENABLE_BIDI})
     set(ADDITIONAL_LIBRARIES ${ADDITIONAL_LIBRARIES} ${PNG_LIBRARIES} ${FRIBIDI_LIBRARIES})
+    if(APPLE)
+        # OSX need libintl link, so you should install gettext and link it to lib
+        # ln -s /usr/local/Cellar/gettext/0.19.8.1/lib/libintl.* /usr/local/lib/
+        find_package(GLib2)
+        if(GLIB2_FOUND)
+            include_directories(${GLIB2_INCLUDE_DIR})
+            set(ADDITIONAL_LIBRARIES ${ADDITIONAL_LIBRARIES} ${GLIB2_LIBRARY})
+        endif()
+    endif()
 endif(FRIBIDI_FOUND)
-
 
 # =======================================================================
 # configure header files, add compiler flags
