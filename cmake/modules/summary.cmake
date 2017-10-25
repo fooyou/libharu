@@ -44,6 +44,7 @@ DEVPAK:			${DEVPAK}
 Optional libraries:
 HAVE_LIBZ:		${LIBHPDF_HAVE_LIBZ}
 HAVE_LIBPNG:		${LIBHPDF_HAVE_LIBPNG}
+HAVE_LIBFRIBIDI:	${LIBHPDF_HAVE_LIBFRIBIDI}
 ")
 message("${_output_results}")
 endmacro(summary)
