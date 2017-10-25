@@ -108,9 +108,10 @@ if(PNG_FOUND)
 endif(PNG_FOUND)
 
 # check fribidi availibility
+find_package(FRIBIDI)
 if(FRIBIDI_FOUND)
     include_directories(${FRIBIDI_INCLUDE_DIR})
-    add_definitions(${LIBHPDF_ENABLE_BIDI})
+    add_definitions(-DLIBHPDF_ENABLE_BIDI)
     set(ADDITIONAL_LIBRARIES ${ADDITIONAL_LIBRARIES} ${PNG_LIBRARIES} ${FRIBIDI_LIBRARIES})
     if(APPLE)
         # OSX need libintl link, so you should install gettext and link it to lib
