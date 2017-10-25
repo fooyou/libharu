@@ -112,7 +112,7 @@ find_package(FRIBIDI)
 if(FRIBIDI_FOUND)
     include_directories(${FRIBIDI_INCLUDE_DIR})
     add_definitions(-DLIBHPDF_ENABLE_BIDI)
-    set(ADDITIONAL_LIBRARIES ${ADDITIONAL_LIBRARIES} ${PNG_LIBRARIES} ${FRIBIDI_LIBRARIES})
+    set(ADDITIONAL_LIBRARIES ${ADDITIONAL_LIBRARIES} ${FRIBIDI_LIBRARIES})
     if(APPLE)
         # OSX need libintl link, so you should install gettext and link it to lib
         # ln -s /usr/local/Cellar/gettext/0.19.8.1/lib/libintl.* /usr/local/lib/
@@ -171,10 +171,11 @@ if (NOT ZLIB_FOUND)
 endif (NOT ZLIB_FOUND)
 
 
-set (LIBHPDF_HAVE_LIBFRIBIDI ${FRIBIDI_FOUND})
-if (NOT FRIBIDI_FOUND)
-    set (LIBHPDF_HAVE_NOFRIBIDI 1)
-endif (NOT FRIBIDI_FOUND)
+if (FRIBIDI_FOUND)
+    set (LIBHPDF_HAVE_LIBFRIBIDI TRUE)
+else()
+    set (LIBHPDF_HAVE_LIBFRIBIDI FALSE)
+endif (FRIBIDI_FOUND)
 
 
 # create hpdf_config.h

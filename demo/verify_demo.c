@@ -536,7 +536,7 @@ int main (int argc, char **argv)
     HPDF_Free (pdf);
     finish = clock();
     duration = (double)(finish - start) / CLOCKS_PER_SEC;
-    printf("%f seconds/n", duration);
+    printf("%f seconds\n", duration);
 
     return 0;
 }
