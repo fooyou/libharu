@@ -24,7 +24,6 @@ if(MSVC)
 endif(MSVC)
 
 
-
 # information about libharu
 set(LIBHPDF_MAJOR 2)
 set(LIBHPDF_MINOR 2)
@@ -274,3 +273,4 @@ else(WIN32)
 endif(WIN32)
 
 INCLUDE( CPack )
+set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
