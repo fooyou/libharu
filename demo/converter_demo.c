@@ -203,25 +203,25 @@ int main (int argc, char **argv)
     HPDF_Page_SetWidth  (page, page_width);
     HPDF_Page_SetHeight (page, page_height);
 
-//    rect.left   = page_width / 2 - 10;
-//    rect.bottom = page_height - 60;
-//    rect.right  = page_width / 2 + 10;
-//    rect.top    = page_height - 80;
-//    HPDF_Page_CreateTextAnnot (page, rect, (const char *)HELLO,
-//                               HPDF_GetUTFEncoder (pdf, HPDF_CHARENC_WCHAR_T));
+    rect.left   = page_width / 2 - 10;
+    rect.bottom = page_height - 60;
+    rect.right  = page_width / 2 + 10;
+    rect.top    = page_height - 80;
+    HPDF_Page_CreateTextAnnot (page, rect, (const char *)HELLO,
+                               HPDF_GetUTFEncoder (pdf, HPDF_CHARENC_WCHAR_T));
 
     HPDF_Page_BeginText (page);
 
     HPDF_Page_SetFontAndSize (page, detail_font, 15);
     HPDF_Page_SetWordSpace (page, 5);
     HPDF_Page_SetCharSpace (page, 0);
-//
-//    HPDF_Page_TextOut (page, 20, page_height - 50, (const char *)HELLO);
-//    HPDF_Page_ShowText (page, (const char *)HELLO_ru);
 
-//    HPDF_Page_SetTextLeading (page, 0);
-//    HPDF_Page_SetJustifyRatio (page, 1, 1, 100);
-//
+    HPDF_Page_TextOut (page, 20, page_height - 50, (const char *)HELLO);
+    HPDF_Page_ShowText (page, (const char *)HELLO_ru);
+
+    HPDF_Page_SetTextLeading (page, 0);
+    HPDF_Page_SetJustifyRatio (page, 1, 1, 100);
+
     HPDF_Page_TextRect (page, 30, page_height - 60,
                         page_width / 2 - 29, 30, (const char *)ONCE_UPON_A_TIME,
                         HPDF_TALIGN_JUSTIFY | HPDF_VALIGN_JUSTIFY_ALL |
@@ -232,13 +232,13 @@ int main (int argc, char **argv)
     HPDF_Page_SetWordSpace (page, 0);
 
     HPDF_Page_SetTextLeading (page, 30);
-//    HPDF_Page_TextOut (page, page_width / 2 + 20, page_height - 90,
-//                       (const char *)HELLO_ru);
-//    HPDF_Page_ShowText (page, (const char *)HELLO);
-//    HPDF_Page_ShowTextNextLine (page, NULL);
-//    HPDF_Page_ShowText (page, (const char *)HELLO_ru);
-//    HPDF_Page_ShowText (page, (const char *)L"!!!!");
-//
+    HPDF_Page_TextOut (page, page_width / 2 + 20, page_height - 90,
+                       (const char *)HELLO_ru);
+    HPDF_Page_ShowText (page, (const char *)HELLO);
+    HPDF_Page_ShowTextNextLine (page, NULL);
+    HPDF_Page_ShowText (page, (const char *)HELLO_ru);
+    HPDF_Page_ShowText (page, (const char *)L"!!!!");
+
     HPDF_Page_SetTextLeading (page, 0);
 
     HPDF_Page_TextRect (page, page_width / 2 + 40, page_height - 60,
@@ -256,24 +256,24 @@ int main (int argc, char **argv)
     /* Finish to print text. */
     HPDF_Page_EndText (page);
 
-//
-//    HPDF_Page_SetLineWidth (page, 0.5);
-//
-//    HPDF_Page_MoveTo (page, 10, page_height - 25);
-//    HPDF_Page_LineTo (page, page_width - 10, page_height - 25);
-//    HPDF_Page_Stroke (page);
-//
-//    HPDF_Page_Rectangle (page, 30, page_height - 60,
-//                         page_width / 2 - 29 - 30, 30 - (page_height - 60));
-//    HPDF_Page_Stroke (page);
-//
-//    HPDF_Page_Rectangle (page, page_width / 2 + 40, page_height - 60,
-//                         page_width - 30 - (page_width / 2 + 40), 405 - (page_height - 60));
-//    HPDF_Page_Stroke (page);
-//
-//    HPDF_Page_Rectangle (page, page_width / 2 + 40, 380,
-//                         page_width - 30 - (page_width / 2 + 40), 30 - 380);
-//    HPDF_Page_Stroke (page);
+
+    HPDF_Page_SetLineWidth (page, 0.5);
+
+    HPDF_Page_MoveTo (page, 10, page_height - 25);
+    HPDF_Page_LineTo (page, page_width - 10, page_height - 25);
+    HPDF_Page_Stroke (page);
+
+    HPDF_Page_Rectangle (page, 30, page_height - 60,
+                         page_width / 2 - 29 - 30, 30 - (page_height - 60));
+    HPDF_Page_Stroke (page);
+
+    HPDF_Page_Rectangle (page, page_width / 2 + 40, page_height - 60,
+                         page_width - 30 - (page_width / 2 + 40), 405 - (page_height - 60));
+    HPDF_Page_Stroke (page);
+
+    HPDF_Page_Rectangle (page, page_width / 2 + 40, 380,
+                         page_width - 30 - (page_width / 2 + 40), 30 - 380);
+    HPDF_Page_Stroke (page);
 
 
     HPDF_SaveToFile (pdf, fname);
